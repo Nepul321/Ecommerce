@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-def ProductDetailView(request, slug, *args, **kwargs):
+def ProductDetailView(request, id, *args, **kwargs):
     template = "product.html"
     context = {
 

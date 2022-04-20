@@ -1,4 +1,7 @@
 from django.contrib import admin
+from django.conf import settings
+from .settings import MEDIA_ROOT
+from django.conf.urls.static import static
 from django.urls import path, include
 
 urlpatterns = [
@@ -6,3 +9,5 @@ urlpatterns = [
     path('', include('base.urls')),
     path('products/', include('products.urls')),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=MEDIA_ROOT)

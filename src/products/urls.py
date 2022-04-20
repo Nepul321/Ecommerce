@@ -5,5 +5,5 @@ from .views import (
 from django.urls import path
 
 urlpatterns = [
-    path('<str:slug>/', ProductDetailView, name="product-detail-view"),
+    path('<int:id>/', ProductDetailView, name="product-detail-view"),
 ]
