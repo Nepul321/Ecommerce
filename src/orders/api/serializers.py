@@ -8,7 +8,7 @@ from base.api.serializers import UserSerializer
 from products.api.serializers import ProductSerializer
 
 class OrderItemSerializer(serializers.ModelSerializer):
-    product = ProductSerializer()
+    product = ProductSerializer(read_only=True)
     class Meta:
         model = OrderItem
         fields = ('product', 'quantity', 'date_added')

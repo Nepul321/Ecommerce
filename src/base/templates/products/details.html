@@ -22,6 +22,7 @@
     </div>
     <h1>{{ obj.title }}</h1>
     <h2>${{ obj.price }}</h2>
+    <button class="btn btn-primary" id="cart-action" data-action="add" data-product="{{ obj.id }}">Add to cart</button>
   </div>
 </div>
 {% endblock content %}
