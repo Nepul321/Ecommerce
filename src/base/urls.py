@@ -1,5 +1,6 @@
 from .views import (
-    HomeView
+    HomeView,
+    ProductView
 )
 
 from .api.views import (
@@ -11,4 +12,5 @@ from django.urls import path
 urlpatterns = [
     path('', HomeView, name="home"),
     path('api/', APIBasePoint, name="api-base-point"),
+    path('products/<int:id>/', ProductView, name="product"),
 ]

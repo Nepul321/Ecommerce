@@ -1,0 +1,27 @@
+{% extends 'base.html' %} 
+
+{% block title %} {{ obj.title }} {% endblock title %}
+
+{% block style %}
+<style>
+  * {
+    font-family: "Roboto", monospace;
+  }
+
+  img {
+      width: 60%;
+  }
+</style>
+{% endblock style %} 
+
+{% block content %}
+<div class="container-fluid my-5">
+  <div class="container">
+    <div class="current_image">
+      <img src="{{ obj.main_image.url }}" alt=""/>
+    </div>
+    <h1>{{ obj.title }}</h1>
+    <h2>${{ obj.price }}</h2>
+  </div>
+</div>
+{% endblock content %}

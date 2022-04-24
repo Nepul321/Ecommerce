@@ -6,14 +6,30 @@
 Ecommerce - Home
 {% endblock title %}
 
+{% block style %}
+<style>
+    * {
+      font-family: "Roboto", monospace;
+    }
+  
+    .card {
+        width: 20rem;
+    }
+  </style>
+{% endblock style %}
 
 {% block content %}
 <div class="container-fluid my-3">
     <h1>Ecommerce</h1>
     <hr />
-    <div class="products my-3" id="root">
+    <div class="container">
+        <center>
+        <div class="products my-3 row" id="root">
 
+        </div>
+    </center>
     </div>
+
 </div>
 
 {% endblock content %}

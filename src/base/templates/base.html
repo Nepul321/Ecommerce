@@ -18,11 +18,13 @@
 
    {% endblock css %}
 </head>
+{% block style %}
 <style>
   * {
     font-family: "Roboto", monospace;
   }
 </style>
+{% endblock style %}
 <body>
     {% include 'components/navbar.html' %}
     {% block content %}

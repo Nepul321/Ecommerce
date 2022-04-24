@@ -3,16 +3,23 @@ const root = document.getElementById("root")
 function insertToRoot(data) {
     data.forEach((item) => {
         const card = document.createElement("div")
-        card.className = "border p-3"
+        const column = document.createElement("div")
+        column.className = "col-sm mb-3"
+        card.className = "card"
+        const url = `/products/${item.id}/`
+        const image_url = `${item.main_image}`
 
         card.innerHTML = `
-        <h2>${item.title}</h2>
+        <img src=${image_url} class="card-img-top" alt="" style="width : 18rem;"/>
+        <div class="card-body">
+        <h4>${item.title}</h4>
         <p>$${item.price}</p>
 
-        <a href="" class="btn btn-info text-white">View</a>
+        <a href=${url} class="btn btn-info text-white">View</a>
+        </div>
         `
-
-        root.appendChild(card)
+        column.appendChild(card)
+        root.appendChild(column)
     })
 }
 
