@@ -15,7 +15,7 @@ function insertToRoot(data) {
         <h4>${item.title}</h4>
         <p>$${item.price}</p>
 
-        <a href=${url} class="btn btn-info text-white">View</a>
+        <a href=${url} class="btn btn-primary">View</a>
         </div>
         `
         column.appendChild(card)
