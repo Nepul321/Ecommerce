@@ -11,6 +11,7 @@ function insertToRoot(data) {
 
         card.innerHTML = `
         <img src=${image_url} class="card-img-top" alt="" style="width : 18rem;"/>
+        <hr />
         <div class="card-body">
         <h4>${item.title}</h4>
         <p>$${item.price}</p>
