@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+Ecommerce - Cart
+{% endblock title %}
+
+{% block content %}
+<div class="container-fluid my-4">
+<h1>Your Cart</h1>
+<hr />
+<div class="container" id="root">
+    {% for item in items %}
+        <div class="card mb-3" style="max-width: 45rem;" id="orderitemdiv" data-id="{{ item.id }}" data-quantity="{{ item.quantity }}">
+          <div class="row g-0">
+              <div class="col-md-4">
+                <img src="{{ item.product.main_image.url }}" class="img-fluid rounded-start" alt=""/>
+              </div>
+              <div class="col-md-8">
+               <div class="card-body">
+                   <h4>
+                       {{ item.product.title }}
+                   </h4>
+                   <p style="font-size : 20px;">Quantity : {{ item.quantity }}</p>
+                   <p style="font-size : 20px;">Total Price : ${{ item.get_total }}</p>
+                   <div class="btn-group">
+                       <button class="btn btn-primary" id="cart-action" data-action="add" data-product="{{ item.product.id }}" data-reload="yes">Add</button>
+                       <button class="btn btn-secondary" id="cart-action" data-action="remove" data-product="{{ item.product.id }}"  data-reload="yes">Remove</button>
+                   </div>
+               </div>
+              </div>
+          </div>
+        </div>
+    {% endfor %}
+</div>
+<div class="container">
+    <h3 id="cart-total">Cart Total : ${{ order.get_cart_total }}</h3>
+    <a class="btn btn-success">Checkout &rightarrow;</a>
+    <div class="my-5">
+        <a href="{% url 'home' %}" class="btn btn-outline-primary">&leftarrow; Back to home</a>
+    </div>
+</div>
+</div>
+{% endblock content %}
+
+{% block js %}
+<script src="{% static '/js/cart/add.js' %}"></script>
+{% endblock js %}
