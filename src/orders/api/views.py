@@ -20,6 +20,7 @@ def OrdersView(request, *args, **kwargs):
     return Response({"detail" : "orders"}, status=200)
 
 @api_view(["GET"])
+@permission_classes([IsAuthenticated])
 def OrderItemsView(request, *args, **kwargs):
     user = request.user
     if user.is_authenticated:
@@ -63,4 +64,11 @@ def AddToCartView(request, *args, **kwargs):
     serializer = OrderSerializer(order)
     data = serializer.data
     
+    return Response(data, status=200)
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def CheckoutView(request, *args, **kwargs):
+    data = {}
+
     return Response(data, status=200)
