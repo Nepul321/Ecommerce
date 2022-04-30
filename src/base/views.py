@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 from products.models import Product
 from orders.models import Order, OrderItem
+import requests
 from django.contrib.auth.decorators import login_required
 
 
@@ -33,6 +34,20 @@ def CartView(request, *args, **kwargs):
     context = {
       "items" : items,
       "order" : order
+    }
+
+    return render(request, template, context)
+
+def SearchView(request, *args, **kwargs):
+    template = "search/search.html"
+    query = request.GET.get("q")
+    if not query:
+        return redirect('/')
+    response = requests.get(f"http://localhost:8000/api/products/search/?q={query}")
+    data = response.json()
+    context = {
+     'query' : query,
+    'results' : data
     }
 
     return render(request, template, context)

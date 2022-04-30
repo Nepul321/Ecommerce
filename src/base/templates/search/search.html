@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Search Results For - {{ query }}
+{% endblock title %}
+
+{% block style %}
+<style>
+    * {
+      font-family: "Roboto", monospace;
+    }
+  
+    .card {
+        width: 20rem;
+    }
+  </style>
+{% endblock style %}
+
+{% block content %}
+<div class="container-fluid my-3">
+    <h1>Results for {{ query }}</h1>
+    <hr />
+    <div class="container my-3">
+        <center>
+            <div class="row">
+                {% for result in results %}
+                <div class="col-sm mb-3">
+                 <div class="card">
+                     <img src="{{ result.main_image }}" class="card-img-top" alt="" style="width : 18rem;" />
+                     <hr />
+                     <div class="card-body">
+                        <h4>{{ result.title }}</h4>
+                        <p>${{ result.price }}</p>
+                
+                        <a href="{% url 'product' result.id %}" class="btn btn-primary">View</a>
+                        </div>
+                 </div>
+                </div>
+                {% endfor %}
+            </div>
+        </center>
+    </div>
+</div>
+{% endblock content %}
