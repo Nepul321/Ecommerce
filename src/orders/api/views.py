@@ -10,6 +10,10 @@ from .serializers import (
     OrderItemSerializer
 )
 
+from shipping.models import ShippingAddress
+
+import datetime
+
 from products.models import Product
 
 from rest_framework.permissions import IsAuthenticated
@@ -69,6 +73,28 @@ def AddToCartView(request, *args, **kwargs):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def CheckoutView(request, *args, **kwargs):
-    data = {}
+    transaction_id = datetime.datetime.now().timestamp()
+    data = request.data
+    customer = request.user
+    order, created = Order.objects.get_or_create(customer=customer, complete=False)
+    total = data['total']
+    order.transaction_id = transaction_id
 
-    return Response(data, status=200)
+    if float(total) == float(order.get_cart_total):
+        order.complete = True
+    order.save()
+
+    if order.shipping == True:
+            ShippingAddress.objects.create(
+                 
+                 customer=customer,
+                 country=data['country'],
+                 order=order,
+                 address=data['address'],
+                 city=data['city'],
+                 state=data['state'],
+                 zipcode=data['zipcode'],
+                )
+            return Response({"detail" : "Payment completed"}, status=200)
+    else:
+        return Response({"detail" : "Payment completed"}, status=200)
