@@ -2,7 +2,8 @@ from .views import (
     HomeView,
     ProductView,
     CartView,
-    SearchView
+    SearchView,
+    CheckoutView
 )
 
 from .api.views import (
@@ -16,5 +17,6 @@ urlpatterns = [
     path('api/', APIBasePoint, name="api-base-point"),
     path('products/<int:id>/', ProductView, name="product"),
     path('cart/', CartView, name="cart-view"),
-    path('search/', SearchView, name="search")
+    path('search/', SearchView, name="search"),
+    path('checkout/', CheckoutView, name="checkout-view"),
 ]

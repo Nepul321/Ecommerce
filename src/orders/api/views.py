@@ -4,18 +4,13 @@ from ..models import (
     Order,
     OrderItem
 )
-
 from .serializers import (
     OrderSerializer,
     OrderItemSerializer
 )
-
 from shipping.models import ShippingAddress
-
 import datetime
-
 from products.models import Product
-
 from rest_framework.permissions import IsAuthenticated
 
 

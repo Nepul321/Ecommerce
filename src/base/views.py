@@ -51,3 +51,12 @@ def SearchView(request, *args, **kwargs):
     }
 
     return render(request, template, context)
+
+@login_required
+def CheckoutView(request, *args, **kwargs):
+    template = "checkout/checkout.html"
+    context = {
+
+    }
+
+    return render(request, template, context)

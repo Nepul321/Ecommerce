@@ -36,7 +36,7 @@ Ecommerce - Cart
 </div>
 <div class="container">
     <h3 id="cart-total">Cart Total : ${{ order.get_cart_total }}</h3>
-    <a class="btn btn-success">Checkout &rightarrow;</a>
+    <a class="btn btn-success" href="{% url 'checkout-view' %}">Checkout &rightarrow;</a>
     <div class="my-5">
         <a href="{% url 'home' %}" class="btn btn-outline-primary">&leftarrow; Back to home</a>
     </div>

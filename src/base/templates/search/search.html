@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}
 Search Results For - {{ query }}
 {% endblock title %}
@@ -42,3 +44,7 @@ Search Results For - {{ query }}
     </div>
 </div>
 {% endblock content %}
+
+{% block js %}
+<script src="{% static '/js/cart/add.js' %}"></script>
+{% endblock js %}
