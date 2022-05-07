@@ -10,8 +10,12 @@
     font-family: "Roboto", monospace;
   }
 
-  img {
-      width: 60%;
+  #main {
+      width: 80%;
+  }
+
+  .sub-image {
+    cursor: pointer;
   }
 </style>
 {% endblock style %} 
@@ -20,7 +24,38 @@
 <div class="container-fluid my-5">
   <div class="container">
     <div class="current_image">
-      <img src="{{ obj.main_image.url }}" alt=""/>
+      <img src="{{ obj.main_image.url }}" alt="" id="main"/>
+    </div>
+    <hr />
+    <div class="row">
+      {% if obj.image1 %}
+      <div class="col-sm mb-3 border">
+        <center>
+          <img src="{{ obj.main_image.url }}" alt="" style="width: 15rem;" class="sub-image"/>
+        </center>
+      </div>
+          <div class="col-sm mb-3 border">
+            <center>
+              <img src="{{ obj.image1.url }}" alt="" style="width: 15rem;" class="sub-image"/>
+            </center>
+          </div>
+      {% endif %}
+
+      {% if obj.image2 %}
+      <div class="col-sm mb-3 border">
+        <center>
+          <img src="{{ obj.image2.url }}" alt="" style="width: 15rem;" class="sub-image"/>
+        </center>
+      </div>
+      {% endif %}
+
+      {% if obj.image3 %}
+      <div class="col-sm mb-3 border-right">
+        <center>
+          <img src="{{ obj.image3.url }}" alt=""  style="width: 18rem;"/>
+        </center>
+      </div>
+      {% endif %}
     </div>
     <h1>{{ obj.title }}</h1>
     <h2>${{ obj.price }}</h2>
@@ -31,4 +66,5 @@
 
 {% block js %}
 <script src="{% static '/js/cart/add.js' %}"></script>
+<script src="{% static '/js/products/images.js' %}"></script>
 {% endblock js %}
