@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+{% load humanize %}
 {% load static %}
 
 {% block title %}
@@ -32,7 +33,7 @@ Search Results For - {{ query }}
                      <hr />
                      <div class="card-body">
                         <h4>{{ result.title }}</h4>
-                        <p>${{ result.price }}</p>
+                        <p>${{ result.price|intcomma }}</p>
                 
                         <a href="{% url 'product' result.id %}" class="btn btn-primary">View</a>
                         </div>

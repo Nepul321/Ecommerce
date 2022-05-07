@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% load static %}
+{% load humanize %}
 
 {% block title %}
 Ecommerce - Cart
@@ -22,8 +23,8 @@ Ecommerce - Cart
                    <h4>
                        {{ item.product.title }}
                    </h4>
-                   <p style="font-size : 20px;">Quantity : {{ item.quantity }}</p>
-                   <p style="font-size : 20px;">Total Price : ${{ item.get_total }}</p>
+                   <p style="font-size : 20px;">Quantity : {{ item.quantity|intcomma }}</p>
+                   <p style="font-size : 20px;">Total Price : ${{ item.get_total|intcomma }}</p>
                    <div class="btn-group">
                        <button class="btn btn-primary" id="cart-action" data-action="add" data-product="{{ item.product.id }}" data-reload="yes">Add</button>
                        <button class="btn btn-secondary" id="cart-action" data-action="remove" data-product="{{ item.product.id }}"  data-reload="yes">Remove</button>
@@ -35,7 +36,7 @@ Ecommerce - Cart
     {% endfor %}
 </div>
 <div class="container">
-    <h3 id="cart-total">Cart Total : ${{ order.get_cart_total }}</h3>
+    <h3 id="cart-total">Cart Total : ${{ order.get_cart_total|intcomma }}</h3>
     <a class="btn btn-success" href="{% url 'checkout-view' %}">Checkout &rightarrow;</a>
     <div class="my-5">
         <a href="{% url 'home' %}" class="btn btn-outline-primary">&leftarrow; Back to home</a>

@@ -8,13 +8,15 @@ function insertToRoot(data) {
         card.className = "card"
         const url = `/products/${item.id}/`
         const image_url = `${item.main_image}`
+        let number = item.price
+        let price = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(number);
 
         card.innerHTML = `
         <img src=${image_url} class="card-img-top" alt="" style="width : 18rem;"/>
         <hr />
         <div class="card-body">
         <h4>${item.title}</h4>
-        <p>$${item.price}</p>
+        <p>${price}</p>
 
         <a href=${url} class="btn btn-primary">View</a>
         </div>

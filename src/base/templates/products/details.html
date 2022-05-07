@@ -2,6 +2,8 @@
 
 {% load static %}
 
+{% load humanize %}
+
 {% block title %} {{ obj.title }} {% endblock title %}
 
 {% block style %}
@@ -58,8 +60,11 @@
       {% endif %}
     </div>
     <h1>{{ obj.title }}</h1>
-    <h2>${{ obj.price }}</h2>
+    <h2>${{ obj.price|intcomma }}</h2>
     <button class="btn btn-primary" id="cart-action" data-action="add" data-product="{{ obj.id }}">Add to cart</button>
+    <div class="my-5">
+      <a href="{% url 'home' %}" class="btn btn-outline-primary">&leftarrow; Back to home</a>
+    </div>
   </div>
 </div>
 {% endblock content %}
